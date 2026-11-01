@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pearl Street Boba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --background: #fff8f0;
+      --text: #3b2f2f;
+      --primary: #7b5e8e;
+      --secondary: #a8d5ba;
+      --accent: #f4a6b8;
+      --surface: #ffffff;
+      --muted: #6b5b5b;
+      --border: #eadfd8;
+      --font-heading: "Pacifico", cursive;
+      --font-body: "Nunito Sans", Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      line-height: 1.25;
+    }
+
+    a {
+      color: var(--text);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.15rem;
+      border: none;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.2;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .btn:hover {
+      background: #624875;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 14px rgba(59, 47, 47, 0.14);
+    }
+
+    .btn-secondary {
+      background: var(--secondary);
+      color: var(--text);
+      border: 2px solid var(--secondary);
+    }
+
+    .btn-secondary:hover {
+      background: #91c6a7;
+    }
+
+    .site-header {
+      background: var(--surface);
+      border-bottom: 4px solid var(--secondary);
+    }
+
+    .navbar {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .navbar-brand {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      text-decoration: none;
+      color: var(--primary);
+    }
+
+    .navbar-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .navbar-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+      padding: 3rem 1.5rem 2.5rem;
+      max-width: 980px;
+      margin: 0 auto;
+      animation: hero-enter 420ms ease-out both;
+    }
+
+    @keyframes hero-enter {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h1 {
+      margin: 0 0 0.6rem;
+      font-size: clamp(2.35rem, 5vw, 3.5rem);
+      line-height: 1.15;
+      color: var(--primary);
+      letter-spacing: 0.01em;
+    }
+
+    .hero p {
+      margin: 0 0 1.25rem;
+      color: var(--muted);
+      font-size: 1.12rem;
+      line-height: 1.55;
+      max-width: 28rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .hero-actions .btn:first-child {
+      padding: 0.85rem 1.35rem;
+      font-size: 1rem;
+    }
+
+    .hero-image {
+      border-radius: 1.25rem;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+      background: var(--secondary);
+      min-height: 260px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 260px;
+    }
+
+    section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 2.25rem 1.5rem;
+    }
+
+    section h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.9rem;
+      color: var(--primary);
+    }
+
+    .section-intro {
+      margin: 0 0 1.25rem;
+      color: var(--muted);
+      max-width: 36rem;
+      font-size: 1rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(59, 47, 47, 0.14);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      background: var(--secondary);
+    }
+
+    .card-body {
+      padding: 1rem;
+    }
+
+    .card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.2rem;
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0 0 0.35rem;
+    }
+
+    .card-title h3 {
+      margin: 0;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--text);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: lowercase;
+    }
+
+    #special {
+      scroll-margin-top: 1.5rem;
+    }
+
+    .card p {
+      margin: 0 0 0.75rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .price {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.05rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.15rem 1.25rem;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+    }
+
+    .info-card h3 {
+      margin: 0 0 0.65rem;
+      font-size: 1.25rem;
+    }
+
+    .info-card ul {
+      margin: 0;
+      padding-left: 1.15rem;
+    }
+
+    .info-card li {
+      margin-bottom: 0.35rem;
+    }
+
+    footer {
+      margin-top: 2rem;
+      background: var(--text);
+      color: var(--background);
+      padding: 2rem 1.5rem;
+    }
+
+    .footer-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    footer h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+    }
+
+    footer p,
+    footer a {
+      margin: 0 0 0.35rem;
+      color: #f1dfdf;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    .copyright {
+      max-width: 980px;
+      margin: 1.25rem auto 0;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      color: #999;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero,
+      .card-grid,
+      .info-grid,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="navbar-brand" href="#">Pearl Street Boba</a>
+      <ul class="navbar-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Pearl Street Boba</h1>
+      <p>Fresh boba tea near campus. Soft pearls, cold milk, and drinks made the same day.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#menu">See the Menu</a>
+        <a class="btn btn-secondary" href="#special">Today's Special</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img
+        src="images/hero.jpg"
+        alt="Fresh boba tea in a cup"
+      />
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="section-intro">
+      Small boba shop on Pearl Street and 4th. Kai opened it for students who want a quick, good drink between classes.
+    </p>
+  </section>
+
+  <section id="menu">
+    <h2>Menu</h2>
+    <p class="section-intro">Popular drinks, ready to order.</p>
+    <div class="card-grid">
+      <article class="card" id="special">
+        <img src="images/brown-sugar.jpg" alt="Classic milk tea" />
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Classic Milk Tea</h3>
+            <span class="badge">special</span>
+          </div>
+          <p>Everyday favorite with soft boba pearls.</p>
+          <p class="price">$5.50</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/brown-sugar-cup.jpg" alt="Brown sugar milk tea" />
+        <div class="card-body">
+          <h3>Brown Sugar Milk Tea</h3>
+          <p>Warm caramel notes and chewy pearls.</p>
+          <p class="price">$6.00</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/layered.jpg" alt="Matcha latte with boba" />
+        <div class="card-body">
+          <h3>Matcha Latte</h3>
+          <p>Smooth green tea latte with boba.</p>
+          <p class="price">$6.25</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/butterfly-pea.png" alt="Butterfly pea flower bubble tea" />
+        <div class="card-body">
+          <h3>Butterfly Pea Flower Tea</h3>
+          <p>Bright blue floral tea with chewy boba pearls.</p>
+          <p class="price">$6.25</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/mango-bubble-tea.png" alt="Mango bubble tea" />
+        <div class="card-body">
+          <h3>Mango Bubble Tea</h3>
+          <p>Sunny mango tea with fruit flavor and boba pearls.</p>
+          <p class="price">$6.25</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/coconut-bubble-tea.png" alt="Coconut bubble tea" />
+        <div class="card-body">
+          <h3>Coconut Bubble Tea</h3>
+          <p>Creamy coconut flavor with chewy boba pearls.</p>
+          <p class="price">$6.25</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/taro.jpg" alt="Taro milk tea" />
+        <div class="card-body">
+          <h3>Taro Milk Tea</h3>
+          <p>Creamy, lightly sweet, and purple.</p>
+          <p class="price">$6.00</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/milk-tea.jpg" alt="Thai tea" />
+        <div class="card-body">
+          <h3>Thai Tea</h3>
+          <p>Bold tea flavor with creamy finish.</p>
+          <p class="price">$5.75</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="images/strawberry.jpg" alt="Strawberry fruit tea" />
+        <div class="card-body">
+          <h3>Strawberry Fruit Tea</h3>
+          <p>Bright, fruity, and easy to drink.</p>
+          <p class="price">$5.50</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="options">
+    <h2>Customize Your Drink</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Toppings</h3>
+        <ul>
+          <li>Classic boba pearls - +$0.75</li>
+          <li>Brown sugar pearls - +$1.00</li>
+          <li>Lychee jelly - +$0.75</li>
+          <li>Aloe jelly - +$0.75</li>
+          <li>Pudding - +$0.75</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>Sweetness & Ice</h3>
+        <ul>
+          <li>Sweetness: 0%, 30%, 50%, 70%, or 100%</li>
+          <li>Extra ice</li>
+          <li>Regular ice</li>
+          <li>Less ice</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <h2>Visit the Shop</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Hours</h3>
+        <ul>
+          <li>Mon-Wed: 11:00 AM - 8:00 PM</li>
+          <li>Thu-Fri: 11:00 AM - 9:00 PM</li>
+          <li>Sat: 12:00 PM - 9:00 PM</li>
+          <li>Sun: 12:00 PM - 7:00 PM</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>Location</h3>
+        <p>418 Pearl Street</p>
+        <p>Across from the campus bookstore</p>
+        <p>Look for the green awning</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-inner">
+      <div>
+        <h3>Pearl Street Boba</h3>
+        <p>Fresh boba tea near campus.</p>
+        <p>Owner: Kai</p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>kai@pearlstreetboba.example</p>
+        <p>(555) 014-2288</p>
+      </div>
+      <div>
+        <h3>Hours</h3>
+        <p>Mon-Fri from 11:00 AM</p>
+        <p>Weekends from 12:00 PM</p>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Pearl Street Boba. Student discount on classic milk tea weekday afternoons.</p>
+  </footer>
+</body>
+</html>
